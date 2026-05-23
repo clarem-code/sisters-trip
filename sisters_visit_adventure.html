@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌲 Sisters Visit Adventure 🌲</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', 'Fredoka', sans-serif;
+            background: linear-gradient(135deg, #FFB6D9 0%, #A0E7E5 25%, #FFEB99 50%, #C7CEEA 75%, #FF9A9E 100%);
+            color: #2c3e50;
+            line-height: 1.8;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C44569 25%, #F8B500 50%, #FF9A76 75%, #A0E7E5 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25);
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            font-size: 1.15em;
+            opacity: 0.98;
+            font-weight: 500;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .day-section {
+            margin-bottom: 30px;
+            border-left: 8px solid;
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .day-section:nth-child(1) {
+            border-left-color: #FF6B9D;
+            background: linear-gradient(to right, #fff5fb, #ffffff);
+        }
+
+        .day-section:nth-child(2) {
+            border-left-color: #F8B500;
+            background: linear-gradient(to right, #fffef5, #ffffff);
+        }
+
+        .day-section:nth-child(3) {
+            border-left-color: #A0E7E5;
+            background: linear-gradient(to right, #f5fffe, #ffffff);
+        }
+
+        .day-section:nth-child(4) {
+            border-left-color: #FF9A76;
+            background: linear-gradient(to right, #fffaf8, #ffffff);
+        }
+
+        .day-section:nth-child(5) {
+            border-left-color: #C44569;
+            background: linear-gradient(to right, #fff5f8, #ffffff);
+        }
+
+        .day-section:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            transform: translateX(5px);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            cursor: pointer;
+            font-size: 1.5em;
+            font-weight: 700;
+            font-family: 'Fredoka', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .day-section:nth-child(1) .day-header {
+            color: #FF6B9D;
+        }
+
+        .day-section:nth-child(2) .day-header {
+            color: #F8B500;
+        }
+
+        .day-section:nth-child(3) .day-header {
+            color: #A0E7E5;
+        }
+
+        .day-section:nth-child(4) .day-header {
+            color: #FF9A76;
+        }
+
+        .day-section:nth-child(5) .day-header {
+            color: #C44569;
+        }
+
+        .day-header:hover {
+            opacity: 0.8;
+            transform: scale(1.02);
+        }
+
+        .day-emoji {
+            font-size: 1.8em;
+        }
+
+        .day-content {
+            margin-left: 35px;
+            display: none;
+        }
+
+        .day-content.active {
+            display: block;
+        }
+
+        .section-title {
+            margin: 20px 0 15px 0;
+            font-size: 1.3em;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            text-decoration: underline;
+            text-decoration-thickness: 4px;
+            letter-spacing: 0.5px;
+        }
+
+        .day-section:nth-child(1) .section-title {
+            color: #FF6B9D;
+            text-decoration-color: #FF6B9D;
+        }
+
+        .day-section:nth-child(2) .section-title {
+            color: #F8B500;
+            text-decoration-color: #F8B500;
+        }
+
+        .day-section:nth-child(3) .section-title {
+            color: #A0E7E5;
+            text-decoration-color: #A0E7E5;
+        }
+
+        .day-section:nth-child(4) .section-title {
+            color: #FF9A76;
+            text-decoration-color: #FF9A76;
+        }
+
+        .day-section:nth-child(5) .section-title {
+            color: #C44569;
+            text-decoration-color: #C44569;
+        }
+
+        .activity {
+            margin: 12px 0;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 10px;
+            border-left: 5px solid;
+            font-weight: 500;
+        }
+
+        .day-section:nth-child(1) .activity {
+            border-left-color: #FF6B9D;
+        }
+
+        .day-section:nth-child(2) .activity {
+            border-left-color: #F8B500;
+        }
+
+        .day-section:nth-child(3) .activity {
+            border-left-color: #A0E7E5;
+        }
+
+        .day-section:nth-child(4) .activity {
+            border-left-color: #FF9A76;
+        }
+
+        .day-section:nth-child(5) .activity {
+            border-left-color: #C44569;
+        }
+
+        .activity strong {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.05em;
+        }
+
+        .day-section:nth-child(1) .activity strong {
+            color: #FF6B9D;
+        }
+
+        .day-section:nth-child(2) .activity strong {
+            color: #F8B500;
+        }
+
+        .day-section:nth-child(3) .activity strong {
+            color: #A0E7E5;
+        }
+
+        .day-section:nth-child(4) .activity strong {
+            color: #FF9A76;
+        }
+
+        .day-section:nth-child(5) .activity strong {
+            color: #C44569;
+        }
+
+        .option-box {
+            background: linear-gradient(135deg, #fff5e6 0%, #fff9f0 100%);
+            padding: 18px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 3px dashed #FF9A76;
+        }
+
+        .option-title {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            color: #FF6B9D;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .urgent {
+            background: linear-gradient(135deg, #FFE5B4 0%, #FFEDD5 100%);
+            border-left: 6px solid #FF6B9D;
+            padding: 18px;
+            margin: 20px 0;
+            border-radius: 12px;
+            font-weight: 600;
+            font-family: 'Fredoka', sans-serif;
+            color: #C44569;
+        }
+
+        .urgent::before {
+            content: "⚡ ";
+            color: #FF6B9D;
+        }
+
+        .todo-section {
+            background: linear-gradient(135deg, #FFE5F1 0%, #E5F5FF 50%, #FFF5E5 100%);
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 40px;
+            border: 3px solid #FF6B9D;
+        }
+
+        .todo-section h2 {
+            color: #FF6B9D;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .todo-section h3 {
+            color: #C44569;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .todo-list {
+            list-style: none;
+        }
+
+        .todo-item {
+            padding: 14px;
+            margin: 10px 0;
+            background: white;
+            border-radius: 10px;
+            border-left: 5px solid #FF6B9D;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(255, 107, 157, 0.1);
+        }
+
+        .todo-item::before {
+            content: "☐";
+            font-size: 1.5em;
+            color: #FF6B9D;
+            min-width: 25px;
+        }
+
+        .restaurant-list {
+            display: grid;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .restaurant-card {
+            background: linear-gradient(to right, #fff5fb, #ffffff);
+            padding: 16px;
+            border-radius: 12px;
+            border-left: 5px solid #FF6B9D;
+            font-size: 0.98em;
+            box-shadow: 0 3px 10px rgba(255, 107, 157, 0.1);
+        }
+
+        .restaurant-name {
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+            color: #FF6B9D;
+            font-size: 1.05em;
+            margin-bottom: 6px;
+        }
+
+        .restaurant-desc {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #FF6B9D 0%, #C44569 100%);
+            color: white;
+            text-align: center;
+            padding: 25px;
+            font-size: 1em;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+        }
+
+        .emoji-row {
+            font-size: 2em;
+            text-align: center;
+            margin: 15px 0;
+            letter-spacing: 15px;
+        }
+
+        .highlights {
+            background: linear-gradient(135deg, #FFFACD 0%, #FFFFE0 100%);
+            padding: 18px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border-left: 5px solid #F8B500;
+            font-weight: 500;
+        }
+
+        .highlights strong {
+            color: #F8B500;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 700;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 15px;
+            }
+
+            .day-section {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌲 SISTERS VISIT ADVENTURE!! 🌲</h1>
+            <p style="font-size: 1.3em; margin-top: 15px; font-weight: 700;">WE CAN'T WAIT FOR YOU!!!!!! 💕✨</p>
+            <p>Downingtown, PA | Saturday - Thursday | Hiking 🥾 Crafts 🎨 Vegan Food 🌱 FUN TIMES 🎉</p>
+            <p style="margin-top: 15px; font-style: italic;">Marg, we can't wait for you to visit us! Thank you so much for making the trip out. 💚</p>
+        </header>
+
+        <div class="content">
+            <div class="emoji-row">🥾 🎨 🌊 🍜 🌲</div>
+
+            <!-- SATURDAY -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="toggle-btn" onclick="toggleDay(this)">▶</span>
+                    <span class="day-emoji">🌆</span>
+                    <span onclick="toggleDay(this.parentElement.querySelector('.toggle-btn'))">SATURDAY: Welcome!! Philly Adventure & Date Night</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity" style="background: linear-gradient(to right, #ffe5e5, #ffffff); border-left-color: #FF6B9D; padding: 15px; margin-bottom: 20px; font-weight: 700; color: #C44569;">
+                        😭 WE'RE SO EXCITED YOU'RE HERE!! 😭💕
+                    </div>
+                    <div class="section-title">🎯 The Plan</div>
+                    <div class="activity">
+                        <strong>Morning/Afternoon:</strong> YOU ARRIVE!! 🎉 Then explore Fishtown/Downtown Philly like the cool kids we are 🚶‍♀️
+                    </div>
+                    <div class="activity">
+                        <strong>Lunch:</strong> Light Box Cafe (seriously yummy vegan spot) ☕ Get your vibe right!
+                    </div>
+                    <div class="activity">
+                        <strong>Evening:</strong> Date night for Clare & Alex! (Don't worry, you're in GREAT hands with Gianna!) 💕
+                    </div>
+
+                    <div class="section-title">🍽️ Marg's Dinner (Gianna's on her best behavior, we promise!)</div>
+                    <div class="urgent">Pick ONE vegan dinner option to grab on the way home or order to-go! 🍴 Relax & let us spoil you!</div>
+
+                    <div class="restaurant-list">
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ Amy's Pastelillos (Fishtown)</div>
+                            <div class="restaurant-desc">Vegan pastelillos $5 each with soy chorizo or yuca. Vegano Bowl with plantains, rice, avocado, beans. Budget-friendly & filling!</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ HipCityVeg (Center City)</div>
+                            <div class="restaurant-desc">Plant-based burgers, chick'n sandwiches, tofu wraps. Quick & easy to grab!</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ LUHV Vegan Deli (Reading Terminal Market)</div>
+                            <div class="restaurant-desc">100% plant-based hoagies, Reubens, breakfast sandwiches. Great for to-go!</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ Goldie</div>
+                            <div class="restaurant-desc">Crunchy falafel sandwich with tahini. Simple & satisfying!</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ Bar Bombon</div>
+                            <div class="restaurant-desc">Puerto Rican plant-based meals. Buffalo cauliflower tacos & empanadas!</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUNDAY -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="toggle-btn" onclick="toggleDay(this)">▶</span>
+                    <span class="day-emoji">🎠</span>
+                    <span onclick="toggleDay(this.parentElement.querySelector('.toggle-btn'))">SUNDAY: Horse Show Extravaganza!! 🎪</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity" style="background: linear-gradient(to right, #fffff0, #ffffff); border-left-color: #F8B500; padding: 15px; margin-bottom: 20px; font-weight: 700; color: #F8B500;">
+                        THIS IS GOING TO BE SO FUN!! We're already planning our outfits!! 👗✨
+                    </div>
+                    <div class="section-title">🎯 The Adventure</div>
+                    <div class="activity">
+                        <strong>Time:</strong> Opens 9-10am, COME ALL DAY!! 🎪 (Bring comfortable shoes, you're gonna walk!)
+                    </div>
+                    <div class="activity">
+                        <strong>Activities:</strong> Browse vendors, see fancy horses, explore fairgrounds like tourists in our own area 😂
+                    </div>
+                    <div class="activity">
+                        <strong>BONUS:</strong> Ferris wheel views!! 🎡 Train rides!! 🚂 We're bringing out the inner child!!
+                    </div>
+
+                    <div class="section-title">🍴 Food at the Show</div>
+                    <div class="urgent">Call ahead to confirm vegan options!</div>
+                    <div class="activity">
+                        <strong>Sips and Bits:</strong> Ask about vegan options 📞
+                    </div>
+                    <div class="activity">
+                        <strong>The Garden Cafe:</strong> Has healthy/vegan options 📞
+                    </div>
+                    <div class="activity">
+                        <strong>Tea Cart:</strong> Mint iced tea & sandwiches 🫖
+                    </div>
+
+                    <div class="section-title">💚 Meals</div>
+                    <div class="activity">Breakfast: At home (bagels, fruit, coffee)</div>
+                    <div class="activity">Lunch: At Devon Horse Show</div>
+                    <div class="activity">Dinner: Eat light or leftovers</div>
+                </div>
+            </div>
+
+            <!-- MONDAY -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="toggle-btn" onclick="toggleDay(this)">▶</span>
+                    <span class="day-emoji">🥾</span>
+                    <span onclick="toggleDay(this.parentElement.querySelector('.toggle-btn'))">MONDAY: Kelly's Run Waterfall Adventure!! 💦</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity" style="background: linear-gradient(to right, #e5f5ff, #ffffff); border-left-color: #A0E7E5; padding: 15px; margin-bottom: 20px; font-weight: 700; color: #A0E7E5;">
+                        YOUR INSTAGRAM IS GOING TO BE FIRE AFTER THIS HIKE!! 📸✨
+                    </div>
+                    <div class="section-title">🏞️ The Hike</div>
+                    <div class="highlights">
+                        <strong>Kelly's Run Nature Preserve</strong> - Lancaster County<br>
+                        Rocky, steep, GORGEOUS WATERFALLS on the Susquehanna River! 💦 (We knew you'd love this part!)
+                    </div>
+                    <div class="activity">
+                        <strong>Distance from home:</strong> 30-45 minutes 🚗
+                    </div>
+                    <div class="activity">
+                        <strong>Hike duration:</strong> 2-3 hours
+                    </div>
+                    <div class="activity">
+                        <strong>What to bring:</strong> Good hiking boots, water, snacks, camera 📸
+                    </div>
+                    <div class="activity">
+                        <strong>Cost:</strong> FREE! 🎉
+                    </div>
+
+                    <div class="section-title">🍴 Post-Hike Lancaster Lunch</div>
+                    <div class="restaurant-list">
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">⭐ Bad Garden Kitchen (OUR TOP PICK!)</div>
+                            <div class="restaurant-desc">Fully vegan comfort food = CARBS & LIFE AFTER HIKING!! 398 Harrisburg Ave. Seriously, this place gets us every time. 😍</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ Root</div>
+                            <div class="restaurant-desc">All vegan, locally sourced, seasonal. Fancy vibes!! (If you're feeling bougie after conquering waterfalls!) 💅</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ Norbu</div>
+                            <div class="restaurant-desc">Nepalese/Bhutanese with many vegan options. Budget-friendly + DELICIOUS! 38 N Christian St</div>
+                        </div>
+                        <div class="restaurant-card">
+                            <div class="restaurant-name">✨ Himalayan Curry & Grill</div>
+                            <div class="restaurant-desc">Indian/Nepalese, spicy & flavorful! 22 E. Orange St. Warning: You'll want to come back! 🔥</div>
+                        </div>
+                    </div>
+
+                    <div class="section-title">💚 Meals</div>
+                    <div class="activity">Breakfast: Early at home</div>
+                    <div class="activity">Lunch: Lancaster restaurant (see above!)</div>
+                    <div class="activity">Dinner: Easy/relaxed at home</div>
+
+                    <div class="section-title">🍜 CURRY DECISION</div>
+                    <div class="urgent">Cook Harvest Moon Curry MONDAY or WEDNESDAY? (See Wednesday for the other option!)</div>
+                </div>
+            </div>
+
+            <!-- TUESDAY -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="toggle-btn" onclick="toggleDay(this)">▶</span>
+                    <span class="day-emoji">📅</span>
+                    <span onclick="toggleDay(this.parentElement.querySelector('.toggle-btn'))">TUESDAY: Mystery Day with Alex!! 🎉</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity" style="background: linear-gradient(to right, #fff5f8, #ffffff); border-left-color: #FF9A76; padding: 15px; margin-bottom: 20px; font-weight: 700; color: #FF9A76;">
+                        ALEX IS SO PUMPED TO HANG WITH YOU!! (He's been talking about this for weeks!!) 🤠
+                    </div>
+                    <div class="section-title">🎯 Morning/Afternoon</div>
+                    <div class="activity">
+                        <strong>TBD with Alex!</strong> Literally whatever you want to do! 😊 Coffee? Explore? Chill? You're in charge!!
+                    </div>
+
+                    <div class="section-title">🌳 Evening: Struble Trail</div>
+                    <div class="highlights">
+                        <strong>Struble Trail</strong> - Right near your home!<br>
+                        Just 5 minutes away. Flat, scenic, perfect for casual chatting 🚶‍♀️
+                    </div>
+                    <div class="activity">
+                        <strong>Length:</strong> 9.5 miles total (walk as much as you want!)
+                    </div>
+                    <div class="activity">
+                        <strong>Vibe:</strong> Easy, relaxed, beautiful river views
+                    </div>
+                    <div class="activity">
+                        <strong>Time:</strong> 1-2 hours in early evening for sunset 🌅
+                    </div>
+                    <div class="activity">
+                        <strong>Cost:</strong> FREE! 🎉
+                    </div>
+
+                    <div class="section-title">💚 Meals</div>
+                    <div class="activity">Breakfast: Your choice</div>
+                    <div class="activity">Lunch: Your choice</div>
+                    <div class="activity">Dinner: Before or after trail walk</div>
+                </div>
+            </div>
+
+            <!-- WEDNESDAY -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="toggle-btn" onclick="toggleDay(this)">▶</span>
+                    <span class="day-emoji">🎨</span>
+                    <span onclick="toggleDay(this.parentElement.querySelector('.toggle-btn'))">WEDNESDAY: Craft Day with Clare!! 🎨💚</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity" style="background: linear-gradient(to right, #fff5fb, #ffffff); border-left-color: #C44569; padding: 15px; margin-bottom: 20px; font-weight: 700; color: #C44569;">
+                        CLARE IS SO EXCITED TO CREATE WITH YOU!! This is her FAVORITE type of day! 😭✨
+                    </div>
+                    <div class="section-title">🎨 Pick Your Craft Adventure!</div>
+
+                    <div class="option-box">
+                        <div class="option-title">✨ Option 1: Air-Dry Clay Letters</div>
+                        <p>Spell words/names for home decor. Paint & decorate. SO FUN & personalized! Takes 2-3 hours. (Warning: You might get paint on your clothes!) 😂</p>
+                    </div>
+
+                    <div class="option-box">
+                        <div class="option-title">✨ Option 2: ChatGPT Art Collection</div>
+                        <p>Generate 9 paintings of your favorite places together. Print them out & frame them as you craft. Personal + creative! (Your wall is gonna look AMAZING!)</p>
+                    </div>
+
+                    <div class="option-box">
+                        <div class="option-title">✨ Option 3: Onesie Frame Project</div>
+                        <p>Use Gianna's onesie as the frame background. Display baby photos. SO SENTIMENTAL & beautiful! 💚 (Warning: Might make you emotional!)</p>
+                    </div>
+
+                    <div class="section-title">🍜 Harvest Moon Curry - The Grand Finale!</div>
+                    <div class="urgent">Cook curry WEDNESDAY!! 🥘 This is the perfect closing dinner to celebrate an AMAZING week together!! (It's gonna smell SO good in the house!)</div>
+
+                    <div class="section-title">💚 Meals</div>
+                    <div class="activity">Breakfast: At home</div>
+                    <div class="activity">Lunch: Wraps, salads, or leftovers</div>
+                    <div class="activity">Dinner: Harvest Moon Curry! 🍜 (or easy meal if doing Monday)</div>
+                </div>
+            </div>
+
+            <!-- THURSDAY -->
+            <div class="day-section">
+                <div class="day-header">
+                    <span class="toggle-btn" onclick="toggleDay(this)">▶</span>
+                    <span class="day-emoji">👋</span>
+                    <span onclick="toggleDay(this.parentElement.querySelector('.toggle-btn'))">THURSDAY: Goodbyes (Not Bye Bye Though!!)</span>
+                </div>
+                <div class="day-content">
+                    <div class="activity" style="background: linear-gradient(to right, #fff5f8, #ffffff); border-left-color: #C44569; padding: 15px; margin-bottom: 20px; font-weight: 700; color: #C44569;">
+                        WHY ARE YOU LEAVING US ALREADY?? This week was EVERYTHING!! 😭💕
+                    </div>
+                    <div class="activity">
+                        <strong>Morning:</strong> Last breakfast/coffee together ☕ (And maybe some tears... the happy kind!)
+                    </div>
+                    <div class="activity">
+                        <strong>Take SO MANY photos!</strong> Capture ALL the final moments & memories 📸
+                    </div>
+                    <div class="activity">
+                        <strong>Safe travels!!</strong> Text us when you get home! We're gonna miss you SO MUCH!! 💚 Already planning the next visit!! 🎉
+                    </div>
+                </div>
+            </div>
+
+            <!-- TO-DO LIST -->
+            <div class="todo-section">
+                <h2>📝 Master To-Do List (LET'S GET READY!!)</h2>
+                <p style="font-size: 0.95em; color: #C44569; margin-bottom: 20px; font-weight: 600;">Let's make sure we have EVERYTHING ready to make this the best week ever!! 💚✨</p>
+
+                <h3 style="color: #C44569; margin-top: 20px; margin-bottom: 10px;">🛒 GROCERIES TO BUY</h3>
+                <ul class="todo-list">
+                    <li class="todo-item">Carrots (2 lbs)</li>
+                    <li class="todo-item">Potatoes - Russet or Gold (3 lb bag)</li>
+                    <li class="todo-item">Fresh Ginger Root (1 piece, ~2 inches)</li>
+                    <li class="todo-item">Poblano Chiles (2 count)</li>
+                    <li class="todo-item">Red Curry Paste (Thai Kitchen or Mae Ploy brand)</li>
+                    <li class="todo-item">Coconut Milk, unsweetened (2 cans, 13.5 oz each)</li>
+                    <li class="todo-item">Rice Vinegar (Marukan or house brand)</li>
+                    <li class="todo-item">Bagels</li>
+                    <li class="todo-item">Hummus</li>
+                    <li class="todo-item">Fresh veggies (tomatoes, cucumbers, lettuce, etc.)</li>
+                    <li class="todo-item">Fruit (apples, bananas, berries)</li>
+                    <li class="todo-item">Crackers</li>
+                    <li class="todo-item">Bread for sandwiches</li>
+                    <li class="todo-item">Pasta</li>
+                    <li class="todo-item">Canned beans</li>
+                    <li class="todo-item">Salt & pepper (if needed)</li>
+                </ul>
+
+                <h3 style="color: #2d7a6f; margin-top: 20px; margin-bottom: 10px;">🎨 CRAFT SUPPLIES TO BUY</h3>
+                <ul class="todo-list">
+                    <li class="todo-item">Air-dry clay ($15-25)</li>
+                    <li class="todo-item">Acrylic paint set</li>
+                    <li class="todo-item">Paintbrushes</li>
+                    <li class="todo-item">Picture frames (various sizes, $20-30)</li>
+                </ul>
+
+                <h3 style="color: #2d7a6f; margin-top: 20px; margin-bottom: 10px;">⚡ URGENT TO-DO</h3>
+                <ul class="todo-list">
+                    <li class="todo-item"><strong>DECIDE MARG'S SATURDAY DINNER!</strong> Pick from 5 vegan options above 🍽️</li>
+                    <li class="todo-item"><strong>Call Devon Horse Show vendors:</strong> Confirm vegan options at Sips and Bits or The Garden Cafe 📞</li>
+                    <li class="todo-item"><strong>DECIDE CURRY DAY:</strong> Monday or Wednesday? 🍜</li>
+                </ul>
+
+                <h3 style="color: #C44569; margin-top: 20px; margin-bottom: 10px;">📋 BEFORE SISTER ARRIVES</h3>
+                <ul class="todo-list">
+                    <li class="todo-item">Check Monday weather for Kelly's Run hike 🌤️</li>
+                    <li class="todo-item">Generate 9 ChatGPT paintings (if doing that craft) 🎨</li>
+                    <li class="todo-item">Charge camera/phone for photos 📸</li>
+                    <li class="todo-item">Gather all craft supplies & organize workspace</li>
+                    <li class="todo-item">Double-check all restaurant hours & locations</li>
+                    <li class="todo-item"><strong>☔ CREATE RAIN CONTINGENCY PLAN!</strong> For Monday hike or Sunday horse show</li>
+                </ul>
+            </div>
+
+            <div class="emoji-row">🌲 🥾 🎨 🍜 🌊</div>
+        </div>
+
+        <footer>
+            <p style="font-size: 1.2em; margin-bottom: 15px;">💚💕✨ SISTERS VISIT ADVENTURE!! ✨💕💚</p>
+            <p style="font-size: 1.1em; margin-bottom: 10px;">Saturday - Thursday | We literally CANNOT WAIT FOR YOU!!</p>
+            <p style="font-style: italic; font-size: 1em;">This is going to be the BEST week !! Hiking! Crafting! Horses! Vegan food (wonder if we can sneak some onto Alex's plate haha)! Quality time! We're so ready!! 🎉</p>
+            <p style="margin-top: 15px; font-size: 0.95em;">P.S. - We love you SO MUCH, Marg! Can't wait to see your face when you arrive! 😭💚</p>
+        </footer>
+    </div>
+
+    <script>
+        function toggleDay(button) {
+            const daySection = button.closest('.day-section');
+            const dayContent = daySection.querySelector('.day-content');
+            const toggleBtn = daySection.querySelector('.toggle-btn');
+
+            dayContent.classList.toggle('active');
+            toggleBtn.textContent = dayContent.classList.contains('active') ? '▼' : '▶';
+        }
+
+        // Expand first day on load
+        window.addEventListener('load', function() {
+            const firstToggle = document.querySelector('.day-section:first-child .toggle-btn');
+            firstToggle.closest('.day-section').querySelector('.day-content').classList.add('active');
+            firstToggle.textContent = '▼';
+        });
+    </script>
+</body>
+</html>
